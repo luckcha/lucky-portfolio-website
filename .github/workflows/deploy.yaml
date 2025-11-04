@@ -20,5 +20,5 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "public/*"
         target: "/var/www/html"
-        rm: true
-        overwrite:
+        rm: false
+        overwrite: true
