@@ -12,7 +12,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Fix folder permission on EC2
+    - name: Set folder permission
       uses: appleboy/ssh-action@v0.1.7
       with:
         host: ${{ secrets.EC2_HOST }}
@@ -29,7 +29,6 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "./*"
         target: "/var/www/html"
-        rm: true
         overwrite: true
 
     - name: Restart nginx
