@@ -21,14 +21,4 @@ jobs:
         source: "public/*"
         target: "/var/www/html"
         rm: true
-        overwrite: true
-        use_sudo: true
-
-    - name: Restart nginx
-      uses: appleboy/ssh-action@v0.1.7
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ubuntu
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          sudo systemctl restart nginx
+        overwrite:
