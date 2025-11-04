@@ -18,10 +18,16 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
-        source: "index.html"
+        source: "./*"
         target: "/var/www/html"
+        rm: true
+        overwrite: true
 
-    - name: Restart nginx
+    - name: Restart Nginx
       uses: appleboy/ssh-action@v0.1.7
       with:
-        host: ${
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          sudo systemctl restart nginx
